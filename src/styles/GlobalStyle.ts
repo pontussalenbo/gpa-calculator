@@ -1,19 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { createGlobalStyle } from 'styled-components'
 
-export interface ThemeProperties {
-  colors: {
-    text: string
-    background: string
-  },
-  fonts: {
-    anekMalayalam: string
-  }
 
-}
-
-
-const GlobalStyles = createGlobalStyle<ThemeProperties>`
+const GlobalStyles = createGlobalStyle`
 
 /* Box sizing rules */
 *,
@@ -34,9 +23,9 @@ body {
   text-rendering: optimizeSpeed;
   font-family: sans-serif;
   font-size: 1rem;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.background};
   line-height: 1;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
 }
 h1,
 h2,

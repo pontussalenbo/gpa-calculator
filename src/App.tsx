@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import { createGlobalStyle } from 'styled-components';
+import type { DefaultTheme } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from 'styles/GlobalStyle';
+import { lightTheme, darkTheme } from 'styles/Theme';
+import MainPage from 'pages/MainPage';
 
-import GradeInput from './components/GradeInput';
 import './App.css';
-
+import Toggle from 'components/ThemeToggler/ThemeToggler';
+import Navbar from 'components/Navbar/Navbar';
+/*
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -11,12 +16,26 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }`;
 
+  */
+
 function App(): JSX.Element {
+	const [theme, setTheme] = useState('dark');
+
+	const isDarkTheme = theme === 'dark';
+
+	const themeSelector = (): DefaultTheme =>
+		isDarkTheme ? darkTheme : lightTheme;
+
+	const onThemeToggle = (): void => {
+		setTheme(isDarkTheme ? 'light' : 'dark');
+	};
+
 	return (
-		<>
-			<GlobalStyle />
-			<GradeInput />
-		</>
+		<ThemeProvider theme={themeSelector}>
+			<GlobalStyles />
+			<Navbar theme={theme} onToggleTheme={onThemeToggle} />
+			<MainPage />
+		</ThemeProvider>
 	);
 }
 

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
 import { device } from 'utils/breakpoints';
 
 interface ContainerProperties {
 	fluid?: boolean;
+	mt?: string;
+	mb?: string;
+	width?: string;
 }
 
 const Container = styled.div<ContainerProperties>`
@@ -11,9 +15,11 @@ const Container = styled.div<ContainerProperties>`
 	*::after {
 		box-sizing: border-box;
 	}
-	width: 100%;
+	width: ${({ width }) => width ?? '100%'};
 	padding-right: 15px;
 	padding-left: 15px;
+	margin-top: ${({ mt }) => mt ?? '0'};
+	margin-bottom: ${({ mb }) => mb ?? '0'};
 	margin-right: auto;
 	margin-left: auto;
 	${({ fluid }) =>
