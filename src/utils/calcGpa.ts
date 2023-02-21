@@ -1,4 +1,4 @@
-import type { Grade } from "../@types/Grade";
+import type { Grade } from "../types/Grade";
 
 const gradeMap: Record<string, number> = {
     "5": 5,
