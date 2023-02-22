@@ -4,19 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyle';
 import { lightTheme, darkTheme } from 'styles/Theme';
 import MainPage from 'pages/MainPage';
+import Navbar from 'components/Navbar/Navbar';
 
 import './App.css';
-import Toggle from 'components/ThemeToggler/ThemeToggler';
-import Navbar from 'components/Navbar/Navbar';
-/*
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }`;
-
-  */
 
 function App(): JSX.Element {
 	const [theme, setTheme] = useState('dark');

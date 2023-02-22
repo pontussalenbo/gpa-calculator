@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { Grade } from '../types/Grade';
 import React from 'react';
-import styled from 'styled-components';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Select from './Select/Select';
 import Option from './Select/Option';
@@ -15,18 +14,7 @@ import {
 	Input as NewInput,
 	Message
 } from './Form/Form.style';
-
-const Button = styled.button`
-	color: #fff;
-	background-color: ${props => props.color ?? '#007bff'};
-	margin-top: 1rem;
-	width: 100%;
-	height: 40px;
-	padding: 0 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-`;
+import { Button } from './Button/Button.style';
 
 interface Errors {
 	grade?: string;
