@@ -32,7 +32,13 @@ const GRADES = ['U', 'G', '3', '4', '5'];
 
 type OnChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
 
-function GradeInput(): JSX.Element {
+interface Props {
+	addGrade: (grade: Grade) => void;
+}
+
+function GradeInput(props: Props): JSX.Element {
+	const { addGrade } = props;
+
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	const [state, setState] = React.useState<Grade>(INIT_STATE);
 	const [savedGrades, setSavedGrades] = useLocalStorage<Grade[]>('grades', []);
@@ -84,6 +90,7 @@ function GradeInput(): JSX.Element {
 		if (!validateGrade(state)) {
 			return;
 		}
+		addGrade(state);
 		setSavedGrades([...savedGrades, state]);
 	};
 	return (
