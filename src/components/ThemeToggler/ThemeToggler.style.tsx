@@ -9,7 +9,6 @@ export const ToggleContainer = styled.button<ToggleContainerProps>`
 	position: relative;
 	display: flex;
 	justify-content: space-between;
-	background: ${({ theme }) => theme.gradient};
 	width: 5rem;
 	height: 2.5rem;
 	margin: 0 auto;

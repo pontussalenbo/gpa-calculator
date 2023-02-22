@@ -1,14 +1,14 @@
-export function warning(condition, message): void {
+export function warning(condition: boolean, message: string): void {
     if (process.env.NODE_ENV === 'production' || condition) {
         return;
     }
 
-    console.warn('useValidation: ' + message);
+    console.warn(`useValidation: ${message}`);
 }
-export function invariant(condition, message): void {
+export function invariant(condition: boolean, message: string): void {
     if (process.env.NODE_ENV === 'production' || condition) {
         return;
     }
 
-    throw new Error('useValidation: ' + message);
+    throw new Error(`useValidation: ${message}`);
 }
