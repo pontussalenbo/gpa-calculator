@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { DefaultTheme } from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyle';
@@ -6,10 +6,11 @@ import { lightTheme, darkTheme } from 'styles/Theme';
 import MainPage from 'pages/MainPage';
 import Navbar from 'components/Navbar/Navbar';
 
-import './App.css';
+import './styles/App.css';
+import useDarkMode from 'hooks/useTheme';
 
 function App(): JSX.Element {
-	const [theme, setTheme] = useState('dark');
+	const [theme, setTheme] = useDarkMode();
 
 	const isDarkTheme = theme === 'dark';
 
@@ -17,14 +18,20 @@ function App(): JSX.Element {
 		isDarkTheme ? darkTheme : lightTheme;
 
 	const onThemeToggle = (): void => {
-		setTheme(isDarkTheme ? 'light' : 'dark');
+		setTheme();
 	};
+
+	useEffect(() => {}, []);
 
 	return (
 		<ThemeProvider theme={themeSelector}>
 			<GlobalStyles />
-			<Navbar theme={theme} onToggleTheme={onThemeToggle} />
-			<MainPage />
+			{theme ? (
+				<>
+					<Navbar theme={theme} onToggleTheme={onThemeToggle} />
+					<MainPage />
+				</>
+			) : null}
 		</ThemeProvider>
 	);
 }

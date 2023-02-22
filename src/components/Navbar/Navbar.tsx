@@ -14,7 +14,9 @@ function Navbar(props: NavbarProps): JSX.Element {
 		<Container>
 			<Bar>
 				<MainNav>
-					<Toggle theme={theme} onToggleTheme={onToggleTheme} />
+					{theme ? (
+						<Toggle theme={theme} onToggleTheme={onToggleTheme} />
+					) : null}
 				</MainNav>
 			</Bar>
 		</Container>

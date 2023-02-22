@@ -5,11 +5,13 @@ import { StyledTable } from './Table.style';
 interface TableProps<T> {
 	data?: T[];
 	headers?: string[];
+	onRemoveGrade: (grade: T) => void;
 }
 
 function TableMarkup<T extends Record<string, unknown>>({
 	data,
-	headers
+	headers,
+	onRemoveGrade
 }: TableProps<T>): JSX.Element | null {
 	if (!data?.length) {
 		return null;
@@ -28,12 +30,14 @@ function TableMarkup<T extends Record<string, unknown>>({
 				</thead>
 				<tbody>
 					{data.map((item, index) => (
-						<tr key={index}>
+						<tr key={item[index] as string}>
 							{titles.map(title => (
 								<td key={item[title] as string}>{item[title] as string}</td>
 							))}
 							<td>
-								<AlertButton>Remove</AlertButton>
+								<AlertButton onClick={(): void => onRemoveGrade(item)}>
+									Remove
+								</AlertButton>
 							</td>
 						</tr>
 					))}
