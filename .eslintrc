@@ -22,6 +22,7 @@
 		"prettier"
 	],
 	"rules": {
+		"@typescript-eslint/naming-convention": "off",
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": [
 		"warn", // or "error"
@@ -99,6 +100,7 @@
 		"react/no-redundant-should-component-update": "off",
 		"react/no-render-return-value": "off",
 		"react/no-string-refs": "off",
+		"@typescript-eslint/no-shadow": ["error", {"allow": ["_", "e", "event"]}],
 		"react/no-this-in-sfc": "off",
 		"react/no-will-update-set-state": "off",
 		"react/prefer-es6-class": "off",
@@ -108,6 +110,7 @@
 		"react/sort-comp": "off",
 		"react/state-in-constructor": "off",
 		"react/static-property-placement": "off",
+		"react/require-default-props": "off",
 
 		"react/boolean-prop-naming": [
 			"error",
