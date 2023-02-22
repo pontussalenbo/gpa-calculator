@@ -15,4 +15,6 @@ export const Button = styled.button`
 
 export const AlertButton = styled(Button)`
 	background-color: #ff0000;
+	width: auto;
+	margin-top: 0;
 `;
