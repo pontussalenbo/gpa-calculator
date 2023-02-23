@@ -6,6 +6,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(({ mode }) => ({
+  base: "/gpa-calculator/",
+  build: {
+    outDir: 'build'
+  },
   test: {
     css: false,
     include: ['src/**/__tests__/*'],

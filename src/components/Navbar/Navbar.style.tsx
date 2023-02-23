@@ -20,9 +20,10 @@ export const Bar = styled.nav`
 	height: 70px;
 	align-items: center;
 `;
+
+// display: ${props => props.display};
 export const MainNav = styled.ul`
 	list-style-type: none;
-	display: ${props => props.display};
 	flex-direction: column;
 	@media (min-width: 768px) {
 		display: flex !important;
