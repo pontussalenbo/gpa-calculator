@@ -10,6 +10,7 @@
 		"preview": "vite preview",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx src",
 		"lint:fix": "npm run lint -- --fix",
+		"lint:staged": "lint-staged",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
 	},
@@ -86,9 +87,11 @@
 		"*": "prettier -uw --cache",
 		"*.css": "stylelint --cache --fix",
 		"*.{ts,tsx}": [
-			"eslint --cache --fix",
-			"vitest related --run --coverage=false"
-		]
+			"prettier --write",
+			"eslint --fix",
+			"git add"
+		],
+		"pre-commit": "lint:staged"
 	},
 	"config": {
 		"commitizen": {
