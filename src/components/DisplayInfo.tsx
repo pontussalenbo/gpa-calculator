@@ -4,6 +4,7 @@ import type React from 'react';
 import styled from 'styled-components';
 import { Grid } from './Grid/Grid';
 import { GridItem } from './Grid/GridItem';
+import { calcGpa, calcCredits } from 'utils/converters';
 
 interface TextProperties {
 	children: React.ReactNode | React.ReactNode[];
@@ -21,7 +22,7 @@ const BoldText = styled(Text)`
 
 interface InfoProperties {
 	// eslint-disable-next-line react/require-default-props
-	credits?: Grade[];
+	grades?: Grade[];
 }
 
 const FlexGridItem = styled(GridItem)`
@@ -29,17 +30,21 @@ const FlexGridItem = styled(GridItem)`
 `;
 
 function DisplayInfo(props: InfoProperties): JSX.Element {
-	const { credits } = props;
+	const { grades } = props;
+
+	const GPA = calcGpa(grades ?? []).toFixed(2);
+	const credits = calcCredits(grades ?? []);
+
 	return (
 		<Container style={{ margin: '3rem 0' }}>
 			<Grid>
 				<FlexGridItem xs={4}>
 					<BoldText>GPA: </BoldText>
-					<Text>{credits?.length ?? 'N/A'}</Text>
+					<Text>{parseFloat(GPA) || 'N/A'}</Text>
 				</FlexGridItem>
 				<FlexGridItem xs={4}>
 					<BoldText>Credits: </BoldText>
-					<Text>{credits?.length ?? 'N/A'}</Text>
+					<Text>{credits || 'N/A'}</Text>
 				</FlexGridItem>
 			</Grid>
 		</Container>

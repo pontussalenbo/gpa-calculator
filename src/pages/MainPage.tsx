@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import Container from 'components/Container';
 import DisplayInfo from 'components/DisplayInfo';
 import GradeInput from 'components/GradeInput';
-import type { Grade } from 'types/Grade';
-import useLocalStorage from 'hooks/useLocalStorage';
 import TableMarkup from 'components/Table/Table';
+import useLocalStorage from 'hooks/useLocalStorage';
+import { useState } from 'react';
+import type { Grade } from 'types/Grade';
 
 function MainPage(): JSX.Element {
 	const [grades, setSavedGrades] = useLocalStorage<Grade[]>('grades', []);
@@ -22,7 +22,7 @@ function MainPage(): JSX.Element {
 	return (
 		<Container>
 			<h1>Grade Calculator</h1>
-			<DisplayInfo />
+			<DisplayInfo grades={data} />
 			<GradeInput addGrade={addGrade} />
 			<Container width='85%'>
 				<TableMarkup<GenericObject<Grade>>
