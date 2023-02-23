@@ -8,13 +8,13 @@ import Container from './Container';
 import Row from './Flex/Row.style';
 import Col from './Flex/Col.style';
 
-import {
-	FormGroup,
-	Label as NewLabel,
-	Input as NewInput,
-	Message
-} from './Form/Form.style';
+import { FormGroup, Label, Input, Message } from './Form/Form.style';
 import { Button } from './Button/Button.style';
+import styled from 'styled-components';
+
+const EvenSpaceRow = styled(Row)`
+	justify-content: space-between;
+`;
 
 interface Errors {
 	grade?: string;
@@ -95,11 +95,11 @@ function GradeInput(props: Props): JSX.Element {
 	};
 	return (
 		<Container>
-			<Row>
+			<EvenSpaceRow id='hello'>
 				<Col xs={6} sm={3}>
 					<FormGroup>
-						<NewLabel htmlFor='course'>Course Name</NewLabel>
-						<NewInput
+						<Label htmlFor='course'>Course Name</Label>
+						<Input
 							id='course'
 							name='course'
 							placeholder='Course Name'
@@ -112,13 +112,13 @@ function GradeInput(props: Props): JSX.Element {
 				</Col>
 				<Col xs={6} sm={3}>
 					<FormGroup>
-						<NewLabel htmlFor='credits'>Credits</NewLabel>
-						<NewInput
+						<Label htmlFor='credits'>Credits</Label>
+						<Input
 							id='credits'
 							name='credits'
 							placeholder='Credits'
 							type='number'
-							step='0.5'
+							step={0.5}
 							value={state.credits}
 							onChange={onHandleChange}
 							required
@@ -128,7 +128,7 @@ function GradeInput(props: Props): JSX.Element {
 				</Col>
 				<Col xs={6} sm={3}>
 					<FormGroup>
-						<NewLabel htmlFor='grade'>Grade</NewLabel>
+						<Label htmlFor='grade'>Grade</Label>
 						<Select
 							name='grade'
 							placeholder='Grade'
@@ -150,7 +150,7 @@ function GradeInput(props: Props): JSX.Element {
 						<Button onClick={onClickAdd}>Add Grade</Button>
 					</FormGroup>
 				</Col>
-			</Row>
+			</EvenSpaceRow>
 		</Container>
 	);
 }
